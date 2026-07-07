@@ -149,16 +149,16 @@ The OLED provides five different display pages.
 
 ---
 
-# ☁ Cloud Integration
+# Cloud Integration
 
 The ESP32 uploads a JSON payload approximately every **2 seconds** to multiple cloud platforms simultaneously.
 
-| Platform | Purpose |
-|-----------|----------|
-| AWS IoT Core | Secure MQTT communication |
-| Firebase Realtime Database | Mobile/Web applications |
-| Blynk | Live dashboard |
-| ThingSpeak | Data visualization & analytics |
+| Platform         | Purpose |
+|---------------   |----------|  
+| AWS IoT Core     | Secure MQTT communication |
+| Firebase         | Mobile/Web applications |
+| Blynk            | Live dashboard |
+| ThingSpeak       | Data visualization & analytics |   
 
 
 
@@ -182,7 +182,7 @@ Smart-Energy-Meter
 
 ---
 
-# 🛠 Software & Technologies
+# Software & Technologies
 
 - Arduino IDE
 - Embedded C++
@@ -198,7 +198,7 @@ Smart-Energy-Meter
 
 ---
 
-# 🚀 Future Improvements
+# Future Improvements
 
 - Mobile application
 - OTA firmware updates
@@ -208,7 +208,7 @@ Smart-Energy-Meter
 
 ---
 
-# 👨‍💻 Author
+# Author
 
 **Sahil Sambherao**
 
