@@ -20,7 +20,7 @@ Real-time electrical parameter monitoring with custom firmware-based power calcu
 # Hardware Prototype
 
 <p align="center">
-<img src="images/hardware_photo.jpeg" width="700">
+<img src="images/hardware_photo.jpg" width="700">
 </p>
 
 ---
