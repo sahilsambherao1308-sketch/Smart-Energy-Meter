@@ -163,6 +163,131 @@ The ESP32 uploads a JSON payload approximately every **2 seconds** to multiple c
 
 
 ---
+# 📚 Required Libraries
+
+The project consists of two independent firmware programs:
+
+- **Arduino UNO Firmware** (`Arduino_UNO.ino`)
+- **ESP32 Firmware** (`ESP32.ino` / `ESP32_AWS_only.ino`)
+
+Install the following libraries before compiling the project.
+
+---
+
+## Arduino UNO Dependencies
+
+| Library | Purpose |
+|----------|---------|
+| Adafruit GFX | Graphics library for OLED |
+| Adafruit SH110X | SH1106 OLED display driver |
+| Adafruit BusIO | Required by Adafruit libraries |
+| EEPROM | Persistent storage of overload events *(Built-in)* |
+| Wire | I²C communication *(Built-in)* |
+| SPI | SPI communication *(Built-in)* |
+
+---
+
+## ESP32 Dependencies
+
+| Library | Purpose |
+|----------|---------|
+| WiFi | Wi-Fi connectivity |
+| WiFiClientSecure | Secure TLS communication |
+| HTTPClient | Firebase & REST API communication |
+| ArduinoJson | JSON parsing and generation |
+| Firebase ESP Client | Firebase Realtime Database |
+| PubSubClient | MQTT communication with AWS IoT |
+| Blynk | Mobile dashboard |
+| ThingSpeak | Cloud analytics platform |
+
+---
+
+# ⚙ ESP32 Board Package
+
+Install the latest **ESP32 by Espressif Systems** from the Arduino Boards Manager.
+
+```
+Arduino IDE
+    ↓
+Boards Manager
+    ↓
+ESP32 by Espressif Systems
+```
+
+---
+
+# 🔧 Project Configuration
+
+Before uploading the firmware, replace the placeholder credentials with your own.
+
+```cpp
+// Wi-Fi Credentials
+const char* ssid = "YOUR_WIFI_NAME";
+const char* password = "YOUR_WIFI_PASSWORD";
+
+// Firebase
+#define FIREBASE_HOST "YOUR_FIREBASE_HOST"
+#define FIREBASE_AUTH "YOUR_FIREBASE_AUTH"
+
+// AWS IoT
+#define AWS_ENDPOINT "YOUR_AWS_ENDPOINT"
+
+// ThingSpeak
+#define THINGSPEAK_API_KEY "YOUR_API_KEY"
+
+// Blynk
+#define BLYNK_AUTH_TOKEN "YOUR_BLYNK_TOKEN"
+```
+
+---
+
+# 💻 Key Library Initialization
+
+### OLED Display
+
+```cpp
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SH110X.h>
+
+Adafruit_SH1106G display(128,64,&Wire,-1);
+```
+
+### Wi-Fi
+
+```cpp
+WiFi.begin(ssid, password);
+
+while (WiFi.status() != WL_CONNECTED)
+{
+    delay(500);
+}
+```
+
+### AWS IoT MQTT
+
+```cpp
+WiFiClientSecure net;
+PubSubClient client(net);
+```
+
+### Firebase
+
+```cpp
+FirebaseData fbdo;
+FirebaseAuth auth;
+FirebaseConfig config;
+```
+
+### ThingSpeak
+
+```cpp
+ThingSpeak.begin(client);
+```
+
+---
+
+
 
 # 📂 Repository Structure
 
@@ -206,15 +331,7 @@ Smart-Energy-Meter
 - Smart home integration
 
 
----
 
-# Author
-
-**Sahil Sambherao**
-
-Electronics & Telecommunication Engineering
-
-Passionate about **Embedded Systems, IoT, Firmware Development, and Edge Computing.**
 
 ---
 
